@@ -22,7 +22,8 @@
       "hosts/${name}"
     ];
     home-modules = map mylib.relativeToRoot [
-      "home/linux/core.nix"
+      "home/linux/tui.nix"
+      "hosts/${name}/home.nix"
     ];
   };
 
@@ -32,6 +33,4 @@ in {
 
   colmena.${name} =
     mylib.colmenaSystem (systemArgs // {inherit tags ssh-user;});
-
-  packages.${name} = inputs.self.nixosConfigurations.${name}.config.formats.kubevirt;
 }
