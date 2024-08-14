@@ -4,32 +4,34 @@
   # and these arguments are used in the functions like `mylib.nixosSystem`, `mylib.colmenaSystem`, etc.
   inputs,
   lib,
-  myvars,
   mylib,
+  myvars,
   system,
   genSpecialArgs,
   ...
 } @ args: let
-  name = "bazzite";
-  tags = [name "bazzite"];
+  name = "k3s";
+  tags = [name];
   ssh-user = "root";
 
   modules = {
     nixos-modules = map mylib.relativeToRoot [
       # common
-      "modules/nixos/server"
+      "modules/nixos/server/server.nix"
       # host specific
       "hosts/${name}"
     ];
     home-modules = map mylib.relativeToRoot [
-      # common
-      "home/linux/tui.nix"
-      # host specific
-      "hosts/${name}/home.nix"
+      "home/linux/core.nix"
     ];
   };
 
   systemArgs = modules // args;
 in {
   nixosConfigurations.${name} = mylib.nixosSystem systemArgs;
+
+  colmena.${name} =
+    mylib.colmenaSystem (systemArgs // {inherit tags ssh-user;});
+
+  packages.${name} = inputs.self.nixosConfigurations.${name}.config.formats.kubevirt;
 }
