@@ -1,5 +1,6 @@
 {
   catppuccin,
+  disko,
   lib,
   ...
 }: let
@@ -9,6 +10,8 @@ in {
     # Include results of the hardware scan.
     ./hardware-configuration.nix
     catppuccin.nixosModules.catppuccin
+    disko.nixosModules.default
+    ./disko-config.nix
   ];
 
   catppuccin = {
@@ -19,9 +22,9 @@ in {
   boot.loader = {
     grub = {
       enable = lib.mkForce true;
-      device = "/dev/sda";
       efiSupport = true;
       useOSProber = true;
+      efiInstallAsRemovable = true;
     };
     systemd-boot = {
       enable = false;
