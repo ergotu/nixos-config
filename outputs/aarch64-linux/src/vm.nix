@@ -24,8 +24,6 @@
     home-modules = map mylib.relativeToRoot [
       # common
       "home/linux/tui.nix"
-      # host specific
-      "hosts/${name}/home.nix"
     ];
   };
 

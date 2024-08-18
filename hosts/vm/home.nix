@@ -1,3 +1,0 @@
-{
-  custom.cloud.enabled = false;
-}
