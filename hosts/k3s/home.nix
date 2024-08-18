@@ -11,6 +11,4 @@
     enable = true;
     flavor = "mocha";
   };
-
-  custom.cloud.enabled = false;
 }
