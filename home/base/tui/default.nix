@@ -5,5 +5,5 @@
 }: {
   imports = mylib.scanPaths ./.;
 
-  custom.cloud.enabled = lib.mkDefault true;
+  custom.cloud.enabled = lib.mkDefault false;
 }
