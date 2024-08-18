@@ -29,9 +29,6 @@ in {
     systemd-boot = {
       enable = false;
     };
-    efi = {
-      canTouchEfiVariables = true;
-    };
   };
 
   networking = {
