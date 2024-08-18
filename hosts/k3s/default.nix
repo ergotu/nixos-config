@@ -1,6 +1,7 @@
 {
   catppuccin,
   disko,
+  pkgs,
   lib,
   ...
 }: let
@@ -33,6 +34,23 @@ in {
 
   networking = {
     inherit hostName;
+  };
+
+  environment.systemPackages = with pkgs; [
+    k3s_1_29
+    k9s
+    kubectl
+    istioctl
+    kubernetes-helm
+    cilium-cli
+    fluxcd
+    skopeo
+    dive
+  ];
+
+  services.k3s = {
+    enable = true;
+    package = pkgs.k3s_1_29;
   };
 
   # This value determines the NixOS release from which the default
