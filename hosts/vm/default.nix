@@ -8,7 +8,7 @@ in {
 
   boot.loader = {
     grub = {
-      enable = lib.mkForce true;
+      enable = true;
       device = "/dev/sda";
       efiSupport = true;
       useOSProber = true;

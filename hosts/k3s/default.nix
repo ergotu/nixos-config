@@ -5,6 +5,7 @@
   ...
 }: let
   hostName = "k3s";
+  k3s_package = pkgs.k3s_1_29;
 in {
   imports = [
     # Include results of the hardware scan.
@@ -15,7 +16,7 @@ in {
 
   boot.loader = {
     grub = {
-      enable = lib.mkForce true;
+      enable = true;
       efiSupport = true;
       useOSProber = true;
       efiInstallAsRemovable = true;
@@ -30,7 +31,7 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
-    k3s_1_29
+    k3s_package
     k9s
     kubectl
     istioctl
@@ -43,7 +44,7 @@ in {
 
   services.k3s = {
     enable = true;
-    package = pkgs.k3s_1_29;
+    package = k3s_package;
   };
 
   # This value determines the NixOS release from which the default
