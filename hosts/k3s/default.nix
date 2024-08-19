@@ -1,5 +1,4 @@
 {
-  catppuccin,
   disko,
   pkgs,
   lib,
@@ -10,15 +9,9 @@ in {
   imports = [
     # Include results of the hardware scan.
     ./hardware-configuration.nix
-    catppuccin.nixosModules.catppuccin
     disko.nixosModules.default
     ./disko-config.nix
   ];
-
-  catppuccin = {
-    enable = true;
-    flavor = "mocha";
-  };
 
   boot.loader = {
     grub = {

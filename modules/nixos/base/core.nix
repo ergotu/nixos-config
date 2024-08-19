@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  catppuccin,
+  lib,
+  ...
+}: {
   boot.loader.systemd-boot = {
     # we use Git for version control, so we don't need to keep too many generations.
     configurationLimit = lib.mkDefault 10;
@@ -12,5 +16,11 @@
       enable = true;
     };
     upower.enable = true;
+  };
+
+  imports = [catppuccin.nixosModules.catppuccin];
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
   };
 }

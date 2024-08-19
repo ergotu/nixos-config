@@ -1,20 +1,10 @@
-{
-  catppuccin,
-  lib,
-  ...
-}: let
+{lib, ...}: let
   hostName = "vm";
 in {
   imports = [
     # Include results of the hardware scan.
     ./hardware-configuration.nix
-    catppuccin.nixosModules.catppuccin
   ];
-
-  catppuccin = {
-    enable = true;
-    flavor = "mocha";
-  };
 
   boot.loader = {
     grub = {
