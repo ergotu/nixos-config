@@ -1,17 +1,24 @@
 {
   disko,
   pkgs,
-  lib,
+  mylib,
+  myvars,
   ...
 }: let
   hostName = "k3s";
-  k3s_package = pkgs.k3s_1_29;
+
+  k3sModule = mylib.genK3sStandaloneModule {
+    inherit pkgs;
+    kubeconfigFile = "/home/${myvars.username}/.kube/config";
+    masterHost = "k3s.in.ergotu.com";
+  };
 in {
   imports = [
     # Include results of the hardware scan.
     ./hardware-configuration.nix
     disko.nixosModules.default
     ./disko-config.nix
+    k3sModule
   ];
 
   boot.loader = {
@@ -28,23 +35,6 @@ in {
 
   networking = {
     inherit hostName;
-  };
-
-  environment.systemPackages = with pkgs; [
-    k3s_package
-    k9s
-    kubectl
-    istioctl
-    kubernetes-helm
-    cilium-cli
-    fluxcd
-    skopeo
-    dive
-  ];
-
-  services.k3s = {
-    enable = true;
-    package = k3s_package;
   };
 
   # This value determines the NixOS release from which the default

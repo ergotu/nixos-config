@@ -7,6 +7,7 @@
 
   genK3sServerModule = import ./genK3sServerModule.nix;
   genK3sAgentModule = import ./genK3sAgentModule.nix;
+  genK3sStandaloneModule = import ./genK3sStandaloneModule.nix;
 
   icons = import ./icons.nix;
 
