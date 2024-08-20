@@ -27,7 +27,7 @@
   # "error: cannot link '/nix/store/.tmp-link-xxxxx-xxxxx' to '/nix/store/.links/xxxx': File exists"
   nix.settings.auto-optimise-store = false;
 
-  nix.gc.automatic = false;
+  nix.gc.automatic = true;
 
   # make `nix run nixpkgs#nixpkgs` use the same nixpkgs as the one used by this flake.
   nix.registry.nixpkgs.flake = nixpkgs;
