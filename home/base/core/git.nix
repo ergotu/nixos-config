@@ -38,11 +38,11 @@
       pull.rebase = true;
 
       # replace https with ssh
-      url = {
-        "ssh://git@github.com/ergotu" = {
-          insteadOf = "https://github.com/ergotu";
-        };
-      };
+      # url = {
+      #   "ssh://git@github.com/ergotu" = {
+      #     insteadOf = "https://github.com/ergotu";
+      #   };
+      # };
     };
 
     # signing = {
