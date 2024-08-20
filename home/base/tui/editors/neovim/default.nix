@@ -4,18 +4,21 @@
   pkgs,
   pkgs-unstable,
   ...
-}: let
+}:
+###############################################################################
+#
+#  AstroNvim's configuration and all its dependencies(lsp, formatter, etc.)
+#
+#e#############################################################################
+let
   shellAliases = {
     v = "nvim";
     vdiff = "nvim -d";
   };
-
-  nvimPath = builtins.path {path = ./nvim;};
 in {
-  home.file.".config/nvim" = {
-    source = nvimPath;
-    recursive = true;
-  };
+  home.activation.installAstroNvim = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    ${pkgs.rsync}/bin/rsync -avz --chmod=D2755,F744 ${./nvim}/ ${config.xdg.configHome}/nvim/
+  '';
 
   home.shellAliases = shellAliases;
   programs.nushell.shellAliases = shellAliases;
@@ -49,13 +52,6 @@ in {
         ":"
         "${lib.makeSearchPathOutput "dev" "lib/pkgconfig" [stdenv.cc.cc zlib]}"
       ];
-
-      extraLuaConfig =
-        #lua
-        ''
-          vim.g.nix = true
-          require("ergotu")
-        '';
 
       # Currently we use lazy.nvim as neovim's package manager, so comment this one.
       #

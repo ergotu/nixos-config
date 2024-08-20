@@ -1,4 +1,4 @@
-{pkgs, ...}: let
+{lib, ...}: let
   hostName = "vm";
 in {
   imports = [
@@ -23,13 +23,6 @@ in {
 
   networking = {
     inherit hostName;
-  };
-
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      stdenv.cc.cc
-    ];
   };
 
   # This value determines the NixOS release from which the default
