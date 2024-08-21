@@ -1,15 +1,11 @@
-{nixvim, ...}: {
-  imports = [nixvim.homeManagerModules.nixvim];
-
+{...}: {
   home.shellAliases.vc = "nvim";
 
-  programs.nixvim = {
+  programs.neovim = {
     enable = true;
     defaultEditor = true;
 
     viAlias = true;
     vimAlias = true;
-
-    luaLoader.enable = true;
   };
 }
