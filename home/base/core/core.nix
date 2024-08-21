@@ -41,6 +41,7 @@
     nix-index # A small utility to index nix store paths
     nix-init # generate nix derivation from url
     # https://github.com/nix-community/nix-melt
+    # TODO: reenable after fix lands on unstable
     # nix-melt # A TUI flake.lock viewer
     # https://github.com/utdemir/nix-tree
     nix-tree # A TUI to visualize the dependency graph of a nix derivation
