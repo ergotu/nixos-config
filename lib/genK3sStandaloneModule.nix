@@ -5,7 +5,7 @@
   kubeletExtraArgs ? [],
   nodeLabels ? [],
   nodeTaints ? [],
-  disableFlannel ? false,
+  disableFlannel ? true,
   ...
 }: let
   lib = pkgs.lib;
