@@ -1,5 +1,6 @@
 {
   impermanence,
+  myvars,
   pkgs,
   ...
 }: {
@@ -42,7 +43,7 @@
     ];
 
     # the following directories will be passed to /persistent/home/$USER
-    users.ergotu = {
+    users."${myvars.username}" = {
       directories = [
         "projects"
         "nixos-config"
