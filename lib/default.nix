@@ -9,8 +9,6 @@
   genK3sAgentModule = import ./genK3sAgentModule.nix;
   genK3sStandaloneModule = import ./genK3sStandaloneModule.nix;
 
-  icons = import ./icons.nix;
-
   mkKey = rec {
     mkKeymap = mode: key: action: desc: {
       inherit mode key action;

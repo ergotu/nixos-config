@@ -20,7 +20,6 @@
     // {
       inherit mylib myvars;
       inherit (mylib) mkKey;
-      inherit (mylib) icons;
 
       inherit opts;
 
