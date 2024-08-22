@@ -112,5 +112,7 @@
     };
 
     catppuccin.url = "github:catppuccin/nix";
+
+    nvimdots.url = "github:ergotu/neovim";
   };
 }

@@ -1,5 +1,6 @@
 {
   catppuccin,
+  nvimdots,
   myvars,
   ...
 }: {
@@ -25,6 +26,7 @@
   # Add catppuccin module
   imports = [
     catppuccin.homeManagerModules.catppuccin
+    nvimdots.homeManagerModules.nvimdots
   ];
 
   catppuccin = {

@@ -39,6 +39,8 @@ in {
     inherit hostName;
   };
 
+  programs.nix-ld.enable = true;
+
   services.qemuGuest.enable = true;
   boot.kernel.sysctl = {
     # --- filesystem --- #
