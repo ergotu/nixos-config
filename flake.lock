@@ -1241,11 +1241,11 @@
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "lastModified": 1724326755,
-        "narHash": "sha256-Lo8PsuCgNWOqL5l9xQCrdFj2fjZGxcUQ+GRMl9Mpko4=",
+        "lastModified": 1724327980,
+        "narHash": "sha256-e+Mbe4AjWxxejFrOuN+6B0tDtcficV1608Rertlg8Ls=",
         "owner": "ergotu",
         "repo": "neovim",
-        "rev": "3263f7f4eed896bc7339c35430744d61a4c2ae3b",
+        "rev": "b6bb41b11a2f7c040d96866eb56515804f590717",
         "type": "github"
       },
       "original": {
