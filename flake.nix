@@ -113,6 +113,9 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
-    nvimdots.url = "github:ergotu/neovim";
+    nvimdots = {
+      url = "github:ergotu/neovim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }
