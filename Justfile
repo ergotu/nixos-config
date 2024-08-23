@@ -74,6 +74,9 @@ darwin-rollback:
 #
 ############################################################################
 
+format file:
+  sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko {{file}}
+
 fmt:
   # format the nix files in this repo
   alejandra fmt
