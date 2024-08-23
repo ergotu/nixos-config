@@ -103,6 +103,7 @@
 
     # `brew install --cask`
     casks = [
+      "arc"
     ];
   };
 }
