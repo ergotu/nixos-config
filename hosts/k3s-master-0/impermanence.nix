@@ -23,8 +23,6 @@
     directories = [
       "/etc/NetworkManager/system-connections"
       "/etc/nix/inputs"
-      "/etc/secureboot" # lanzaboote - secure boot
-      # my secrets
       "/etc/agenix/"
 
       "/var/log"
@@ -47,7 +45,26 @@
       directories = [
         "projects"
         "nixos-config"
-        "tmp"
+        {
+          directory = ".gnupg";
+          mode = "0700";
+        }
+        {
+          directory = ".ssh";
+          mode = "0700";
+        }
+        {
+          directory = ".nixops";
+          mode = "0700";
+        }
+        {
+          directory = ".local/share/keyrings";
+          mode = "0700";
+        }
+      ];
+
+      files = [
+        ".local/share/nix/trusted-settings.json"
       ];
     };
   };
