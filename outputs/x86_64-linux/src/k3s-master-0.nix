@@ -11,7 +11,7 @@
   ...
 } @ args: let
   name = "k3s-master-0";
-  tags = [name];
+  tags = [name "k8s"];
   ssh-user = "root";
 
   modules = {
