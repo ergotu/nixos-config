@@ -45,6 +45,8 @@
     gnutar
     rsync
     ueberzug
+
+    attic-client
   ];
 
   users.users.${myvars.username} = {
