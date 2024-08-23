@@ -1,15 +1,13 @@
-{
-  config,
-  lib,
-  pkgs,
-  pkgs-unstable,
-  ...
-}: let
+{nvimdots, ...}: let
   shellAliases = {
     v = "nvim";
     vdiff = "nvim -d";
   };
 in {
+  imports = [
+    nvimdots.homeManagerModules.nvimdots
+  ];
+
   home.shellAliases = shellAliases;
 
   programs.neovim = {
