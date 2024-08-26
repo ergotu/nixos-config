@@ -6,6 +6,9 @@
 #
 ############################################################################
 
+default:
+  @just --list
+
 # Remote deployment via colmena
 col tag:
   nix-shell -p colmena nix --run "colmena apply --on '@{{tag}}' --verbose --show-trace"
@@ -45,8 +48,8 @@ clean:
 # Garbage collect all unused nix store entries
 gc:
   # garbage collect all unused nix store entries
-  sudo nix store gc --debug
-  sudo nix-collect-garbage --delete-old
+  sudo nix-collect-garbage --delete-older-than 7d
+  sudo nix-collect-garbage --delete-older-than 7d
 
 # Remove all reflog entries and prune unreachable objects
 gitgc:
