@@ -19,4 +19,5 @@
 
   # Fix: jasper is marked as broken, refusing to evaluate.
   environment.enableAllTerminfo = lib.mkForce false;
+  services.netdata.enable = true;
 }
