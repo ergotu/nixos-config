@@ -166,15 +166,9 @@
   # Fonts
   fonts = {
     packages = with pkgs; [
-      # packages = with pkgs; [
       # icon fonts
       material-design-icons
       font-awesome
-
-      source-sans
-      source-serif
-      source-han-sans
-      source-han-serif
 
       # nerdfonts
       # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/pkgs/data/fonts/nerdfonts/shas.nix
@@ -188,8 +182,6 @@
           "Iosevka"
         ];
       })
-      julia-mono
-      dejavu_fonts
     ];
   };
 }
