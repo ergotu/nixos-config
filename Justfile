@@ -8,7 +8,10 @@
 
 # Remote deployment via colmena
 col tag:
-  colmena apply --on '@{{tag}}' --verbose --show-trace
+  nix-shell -p colmena nix --run "colmena apply --on '@{{tag}}' --verbose --show-trace"
+
+col-remote tag:
+  nix-shell -p colmena nix --run "colmena apply --on '@{{tag}}' --verbose --show-trace --build-on-target"
 
 local name mode="default":
   use utils.nu *; \
