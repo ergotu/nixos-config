@@ -115,6 +115,7 @@ in {
       pre-commit-check = pre-commit-hooks.lib.${system}.run {
         src = mylib.relativeToRoot ".";
         hooks = {
+          commitizen.enable = true;
           alejandra.enable = true; # formatter
           # Source code spell checker
           typos = {
