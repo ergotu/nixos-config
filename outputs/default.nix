@@ -2,6 +2,7 @@
   self,
   nixpkgs,
   pre-commit-hooks,
+  nvimdots,
   ...
 } @ inputs: let
   inherit (inputs.nixpkgs) lib;
@@ -158,6 +159,8 @@ in {
           typos
           # code formatter
           nodePackages.prettier
+
+          nvimdots.packages.${system}.neovim
         ];
         name = "dots";
         shellHook = ''
