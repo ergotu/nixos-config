@@ -38,6 +38,8 @@
         # To use chrome, we need to allow the installation of non-free software
         config.allowUnfree = true;
       };
+
+      secrets = builtins.fromJSON (builtins.readFile "${self}/secrets/secrets.json");
     };
 
   # This is the args for all the haumea modules in this folder.

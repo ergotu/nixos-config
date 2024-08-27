@@ -1,4 +1,8 @@
-{disko, ...}: let
+{
+  disko,
+  srvos,
+  ...
+}: let
   hostName = "github-runner";
 in {
   imports = [
@@ -7,6 +11,7 @@ in {
     disko.nixosModules.default
     ./disko-config.nix
     ./impermanence.nix
+    ./github-actions.nix
   ];
 
   boot.loader = {

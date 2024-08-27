@@ -1261,7 +1261,8 @@
         "nuenv": "nuenv",
         "nvimdots": "nvimdots",
         "pre-commit-hooks": "pre-commit-hooks_2",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "srvos": "srvos"
       }
     },
     "rust-analyzer-src": {
@@ -1388,6 +1389,26 @@
       "original": {
         "type": "git",
         "url": "https://spectrum-os.org/git/spectrum"
+      }
+    },
+    "srvos": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1724668936,
+        "narHash": "sha256-d0NsQXqCFQ218amt+TJ1xRuTJhx0Q7uE8UNbcN2M/XE=",
+        "owner": "nix-community",
+        "repo": "srvos",
+        "rev": "7a53c57fb8034aa753513b14b0ac6ae5d8e76476",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "srvos",
+        "type": "github"
       }
     },
     "systems": {
