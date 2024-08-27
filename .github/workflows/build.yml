@@ -17,12 +17,20 @@ jobs:
       # Here we specify the matrix of our hosts and their target platform architectures
       matrix:
         machine:
+          - host: desktop-hyprland
+            platform: x86-64-linux
           - host: k3s-master-0
             platform: x86-64-linux
           - host: vm
             platform: aarch64-linux
 
     steps:
+      - name: Maximize build space
+        uses: easimon/maximize-build-space@master
+        with:
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+          remove-dotnet: "true"
       - uses: actions/checkout@v4
 
       # We only run this if we are building an aarch64-linux system
