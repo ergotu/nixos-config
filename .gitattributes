@@ -1,0 +1,1 @@
+github-actions.nix filter=git-crypt diff=git-crypt
