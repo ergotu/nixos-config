@@ -7,7 +7,6 @@ on:
     paths-ignore:
       - "scripts/**"
       - "**.md"
-      - "**.nu"
       - "Justfile"
 
 jobs:
@@ -49,12 +48,10 @@ jobs:
             extra-platforms = aarch64-linux
             substituters = https://attic.ergotu.com/system?priority=43 https://nix-community.cachix.org?priority=41 https://numtide.cachix.org?priority=42 https://cache.nixos.org/
             trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= system:tqRuvHZjHCGH0dWDXShIRPlocnrtZGPbXIhv7AxC+0s= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE=
+
       - uses: DeterminateSystems/magic-nix-cache-action@main
-      # We make sure that any git-encrypted files are decrypted before we begin to build
-      - run: |
-          # echo "${{ secrets.GIT_CRYPT_KEY }}" | base64 --decode > key
-          # nix profile install nixpkgs#git-crypt
-          # git-crypt unlock key
+        name: Run the Magic Nix Cache
+        # We make sure that any git-encrypted files are decrypted before we begin to build
 
       # We build each system in a separate job, targeting the configuration using matrix.machine.host
       # Once built, we login to Attic and push the built system to our `system` cache!
