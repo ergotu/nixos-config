@@ -40,7 +40,6 @@
 
     # home-manager, used for managing user configuration
     home-manager = {
-      # url = "github:nix-community/home-manager/release-24.05";
       url = "github:nix-community/home-manager/master";
 
       # The `follows` keyword in inputs is used for inheritance.
@@ -50,7 +49,7 @@
     };
 
     # home-manager, used for managing user configuration
-    home-manager-darwin = {
+    home-manager-stable = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };

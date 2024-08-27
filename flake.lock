@@ -562,7 +562,7 @@
         "type": "github"
       }
     },
-    "home-manager-darwin": {
+    "home-manager-stable": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs-stable"
@@ -1259,7 +1259,7 @@
         "disko": "disko",
         "haumea": "haumea",
         "home-manager": "home-manager_2",
-        "home-manager-darwin": "home-manager-darwin",
+        "home-manager-stable": "home-manager-stable",
         "hyprland": "hyprland",
         "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",

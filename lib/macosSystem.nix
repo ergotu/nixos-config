@@ -10,7 +10,7 @@
   ...
 }: let
   inherit (inputs) nixpkgs-darwin nix-darwin;
-  home-manager = inputs.home-manager-darwin;
+  home-manager = inputs.home-manager-stable;
 in
   nix-darwin.lib.darwinSystem {
     inherit system specialArgs;
