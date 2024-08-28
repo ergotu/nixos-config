@@ -11,8 +11,6 @@
   ...
 } @ args: let
   name = "desktop";
-  tags = [name];
-  ssh-user = "root";
 
   base-modules = {
     nixos-modules = map mylib.relativeToRoot [
@@ -51,8 +49,5 @@
 in {
   nixosConfigurations = {
     "${name}-hyprland" = mylib.nixosSystem hyprlandArgs;
-  };
-  colmena = {
-    "${name}-hyprland" = mylib.colmenaSystem (hyprlandArgs // {inherit tags ssh-user;});
   };
 }
