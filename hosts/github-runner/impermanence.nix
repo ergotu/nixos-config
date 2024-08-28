@@ -43,6 +43,7 @@
     # the following directories will be passed to /persistent/home/$USER
     users."${myvars.username}" = {
       directories = [
+        ".local/share/nix/"
         "/vaults/personal"
         "/vaults/work"
         "projects"
@@ -66,7 +67,6 @@
       ];
 
       files = [
-        ".local/share/nix/trusted-settings.json"
       ];
     };
   };

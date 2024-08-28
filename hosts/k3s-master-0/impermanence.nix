@@ -47,6 +47,7 @@
         "/vaults/work"
         "projects"
         "nixos-config"
+        ".local/share/nix"
         {
           directory = ".gnupg";
           mode = "0700";
@@ -66,7 +67,6 @@
       ];
 
       files = [
-        ".local/share/nix/trusted-settings.json"
       ];
     };
   };

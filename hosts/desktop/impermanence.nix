@@ -81,7 +81,6 @@
       ];
 
       files = [
-        ".local/share/nix/trusted-settings.json"
       ];
     };
   };
