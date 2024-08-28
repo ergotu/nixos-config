@@ -9,7 +9,7 @@
 
   roles.github-actions-runner = {
     url = "https://github.com/ergotu";
-    count = 10;
+    count = 0;
     name = "github-runner";
     githubApp = {
       id = "980530";
