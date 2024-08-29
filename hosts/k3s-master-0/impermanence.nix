@@ -43,8 +43,8 @@
     # the following directories will be passed to /persistent/home/$USER
     users."${myvars.username}" = {
       directories = [
-        "/vaults/personal"
-        "/vaults/work"
+        "vaults/personal"
+        "vaults/work"
         "projects"
         "nixos-config"
         ".local/share/nix"

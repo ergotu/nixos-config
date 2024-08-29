@@ -43,9 +43,8 @@
     # the following directories will be passed to /persistent/home/$USER
     users."${myvars.username}" = {
       directories = [
-        ".local/share/nix/"
-        "/vaults/personal"
-        "/vaults/work"
+        "vaults/personal"
+        "vaults/work"
         "projects"
         "nixos-config"
         {
@@ -64,6 +63,9 @@
           directory = ".local/share/keyrings";
           mode = "0700";
         }
+
+        # nix trusted config etc
+        ".local/share/nix/"
       ];
 
       files = [
