@@ -1143,11 +1143,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1724851071,
-        "narHash": "sha256-KNN/+zlAZ3MRSHluyTY78nF963OiUg3STUyiSAfCGhw=",
+        "lastModified": 1724910375,
+        "narHash": "sha256-0LN9AfjOuUOcfTlTQsxzKyS8D1xqaoEbXxp+OaQQWlQ=",
         "owner": "ergotu",
         "repo": "neovim",
-        "rev": "d39850b48e1baa38d229d52205df57906dc4de95",
+        "rev": "d4fbc2964fb2f68a0122397f8b27c3b3a5b98975",
         "type": "github"
       },
       "original": {
