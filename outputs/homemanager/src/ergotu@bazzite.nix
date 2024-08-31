@@ -11,14 +11,15 @@
   ...
 } @ args: let
   name = "ergotu@bazzite";
+  system = "x86_64-linux";
+
+  inherit (inputs) nixpkgs home-manager;
+  pkgs = nixpkgs.legacyPackages.${system};
 in {
   # macOS's configuration
-  homeConfigurations.${name} = {
-    inherit system;
+  homeConfigurations.${name} = home-manager.lib.homeManagerConfiguration {
+    inherit pkgs;
+    modules = map mylib.relativeToRoot ["home/linux/tui.nix"];
     extraSpecialArgs = genSpecialArgs system;
-
-    modules = map mylib.relativeToRoot [
-      "home/linux/tui.nix"
-    ];
   };
 }

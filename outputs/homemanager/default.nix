@@ -19,6 +19,3 @@
   };
 in
   outputs
-  // {
-    inherit data; # for debugging purposes
-  }

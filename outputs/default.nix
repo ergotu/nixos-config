@@ -62,16 +62,12 @@
   # Helper function to generate a set of attributes for each system
   forAllSystems = func: (nixpkgs.lib.genAttrs allSystemNames func);
 
-  homeSystems = {
-    x86_64-linux = import ./x86_64-homemanager (args // {system = "x86_64-linux";});
-  };
-  homeSystemValues = builtins.attrNames homeSystems;
+  homeSystems = import ./homemanager args;
 in {
   # Add attribute sets into outputs, for debugging
-  debugAttrs = {inherit nixosSystems darwinSystems allSystems allSystemNames;};
+  debugAttrs = {inherit nixosSystems darwinSystems allSystems allSystemNames homeSystems;};
 
-  homeConfigurations =
-    lib.attrsets.mergeAttrsList (map (it: it.homeConfigurations or {}) homeSystemValues);
+  homeConfigurations = homeSystems.homeConfigurations;
 
   # NixOS Hosts
   nixosConfigurations =
