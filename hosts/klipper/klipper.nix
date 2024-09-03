@@ -1,4 +1,22 @@
-{
+{pkgs, ...}: let
+  firmware = pkgs.klipper-firmware.override {
+    mcu = "octopus-v1.1";
+    firmwareConfig = ./config;
+    gcc-arm-embedded = pkgs.gcc-arm-embedded-10;
+  };
+  flasher = pkgs.callPackage ./klipper-flash.nix {
+    flashMethodOverride = "flash";
+    mcu = "octopus-v1.1";
+    klipper-firmware = firmware;
+    firmwareConfig = ./config;
+    flashDevice = "/dev/serial/by-id/usb-Klipper_stm32f429xx_3A0034001350344D30363120-if00";
+    gcc-arm-embedded = pkgs.gcc-arm-embedded-10;
+  };
+in {
+  environment.systemPackages = [
+    firmware
+    flasher
+  ];
   services.klipper = {
     enable = true;
     user = "ergotu";
@@ -7,14 +25,6 @@
     mutableConfig = true;
     mutableConfigFolder = "/var/lib/klipper/config";
     logFile = "/var/lib/klipper/klipper.log";
-    firmwares = {
-      mcu = {
-        enable = true;
-        configFile = ./config;
-        serial = "/dev/serial/by-id/usb-Klipper_stm32f429xx_3A0034001350344D30363120-if00";
-        enableKlipperFlash = true;
-      };
-    };
   };
 
   services.moonraker = {
