@@ -21,10 +21,18 @@ in {
 
   services.xserver.enable = true;
 
+  users.users.klipper = {
+    isSystemUser = true;
+    group = "klipper";
+  };
+  users.groups.klipper = {};
+
+  security.polkit.enable = true;
+
   services.klipper = {
     enable = true;
-    user = "ergotu";
-    group = "ergotu";
+    user = "klipper";
+    group = "klipper";
     configFile = ./printer.conf;
     mutableConfig = true;
     mutableConfigFolder = "/var/lib/klipper/config";
@@ -32,9 +40,11 @@ in {
   };
 
   services.moonraker = {
-    user = "ergotu";
+    user = "klipper";
+    group = "klipper";
     enable = true;
     address = "0.0.0.0";
+    allowSystemControl = true;
     stateDir = "/var/lib/klipper";
     settings = {
       octoprint_compat = {};
@@ -58,22 +68,10 @@ in {
     };
   };
 
-  services.fluidd.enable = true;
-  services.fluidd.nginx.locations."/webcam".proxyPass = "http://127.0.0.1:8080/stream";
-  services.nginx.clientMaxBodySize = "1000m";
-
-  virtualisation = {
-    docker = {
-      enable = true;
-      daemon.settings = {
-        # enables pulling using containerd, which supports restarting from a partial pull
-        # https://docs.docker.com/storage/containerd/
-        "features" = {"containerd-snapshotter" = true;};
-      };
-
-      # start dockerd on boot.
-      # This is required for containers which are created with the `--restart=always` flag to work.
-      enableOnBoot = true;
-    };
+  services.fluidd = {
+    enable = true;
+    nginx.extraConfig = ''
+      client_max_body_size 1G;
+    '';
   };
 }
