@@ -16,7 +16,11 @@ in {
   environment.systemPackages = [
     firmware
     flasher
+    pkgs.klipperscreen
   ];
+
+  services.xserver.enable = true;
+
   services.klipper = {
     enable = true;
     user = "ergotu";
