@@ -11,7 +11,7 @@ in {
     disko.nixosModules.default
     ./disko-config.nix
     ./impermanence.nix
-    ./klipper.nix
+    ./klipper
   ];
 
   boot.loader = {

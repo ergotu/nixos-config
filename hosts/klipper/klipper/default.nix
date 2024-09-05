@@ -1,22 +1,21 @@
 {pkgs, ...}: let
   firmware = pkgs.klipper-firmware.override {
     mcu = "octopus-v1.1";
-    firmwareConfig = ./config;
-    gcc-arm-embedded = pkgs.gcc-arm-embedded-10;
+    firmwareConfig = ./firmware/config;
+    stm32flash = pkgs.stm32flash;
   };
-  flasher = pkgs.callPackage ./klipper-flash.nix {
+  flasher = pkgs.callPackage ./firmware {
     flashMethodOverride = "flash";
     mcu = "octopus-v1.1";
     klipper-firmware = firmware;
-    firmwareConfig = ./config;
+    firmwareConfig = ./firmware/config;
     flashDevice = "/dev/serial/by-id/usb-Klipper_stm32f429xx_3A0034001350344D30363120-if00";
-    gcc-arm-embedded = pkgs.gcc-arm-embedded-10;
+    stm32flash = pkgs.stm32flash;
   };
 in {
   environment.systemPackages = [
     firmware
     flasher
-    pkgs.klipperscreen
   ];
 
   services.xserver.enable = true;
@@ -25,6 +24,7 @@ in {
     isSystemUser = true;
     group = "klipper";
   };
+
   users.groups.klipper = {};
 
   security.polkit.enable = true;
@@ -33,7 +33,7 @@ in {
     enable = true;
     user = "klipper";
     group = "klipper";
-    configFile = ./printer.conf;
+    configFile = ./config/printer.cfg;
     mutableConfig = true;
     mutableConfigFolder = "/var/lib/klipper/config";
     logFile = "/var/lib/klipper/klipper.log";
@@ -57,10 +57,8 @@ in {
         trusted_clients = [
           "10.0.0.0/8"
           "127.0.0.0/8"
-          "169.254.0.0/16"
           "172.16.0.0/12"
-          "192.168.1.0/24"
-          "192.168.99.0/24"
+          "192.168.0.0/16"
           "FE80::/10"
           "::1/128"
         ];
