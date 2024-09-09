@@ -15,15 +15,11 @@ in {
   ];
 
   boot.loader = {
-    grub = {
-      enable = true;
-      efiSupport = true;
-      useOSProber = true;
-      efiInstallAsRemovable = true;
-      device = "/dev/sda";
-    };
     systemd-boot = {
-      enable = false;
+      enable = true;
+    };
+    efi = {
+      canTouchEfiVariables = true;
     };
   };
 
