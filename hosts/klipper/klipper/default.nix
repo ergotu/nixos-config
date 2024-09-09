@@ -18,8 +18,6 @@ in {
     flasher
   ];
 
-  services.xserver.enable = true;
-
   users.users.klipper = {
     isSystemUser = true;
     group = "klipper";
