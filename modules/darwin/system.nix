@@ -170,6 +170,11 @@
       material-design-icons
       font-awesome
 
+      fira-code
+      iosevka
+      jetbrains-mono
+      monaspace
+
       # nerdfonts
       # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/pkgs/data/fonts/nerdfonts/shas.nix
       (nerdfonts.override {
@@ -180,6 +185,7 @@
           "FiraCode"
           "JetBrainsMono"
           "Iosevka"
+          "Monaspace"
         ];
       })
     ];

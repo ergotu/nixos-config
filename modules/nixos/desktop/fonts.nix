@@ -11,7 +11,6 @@
 
       fira-code
       iosevka
-      noto-fonts-emoji
       monaspace
       jetbrains-mono
 
