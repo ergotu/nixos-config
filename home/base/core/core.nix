@@ -1,8 +1,4 @@
-{
-  pkgs,
-  pkgs-stable,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     # Misc
     tldr
@@ -45,8 +41,7 @@
     nix-index # A small utility to index nix store paths
     nix-init # generate nix derivation from url
     # https://github.com/nix-community/nix-melt
-    # TODO: move back to unstable after fix lands on unstable
-    pkgs-stable.nix-melt # A TUI flake.lock viewer
+    nix-melt # A TUI flake.lock viewer
     # https://github.com/utdemir/nix-tree
     nix-tree # A TUI to visualize the dependency graph of a nix derivation
     nvd # Nix/NixOs package version diffing
@@ -80,22 +75,6 @@
     # A command-line fuzzy finder
     fzf = {
       enable = true;
-      # https://github.com/catppuccin/fzf
-      # catppuccin-mocha
-      colors = {
-        "bg+" = "#313244";
-        "bg" = "#1e1e2e";
-        "spinner" = "#f5e0dc";
-        "hl" = "#f38ba8";
-        "fg" = "#cdd6f4";
-        "header" = "#f38ba8";
-        "info" = "#cba6f7";
-        "pointer" = "#f5e0dc";
-        "marker" = "#f5e0dc";
-        "fg+" = "#cdd6f4";
-        "prompt" = "#cba6f7";
-        "hl+" = "#f38ba8";
-      };
     };
 
     # zoxide is a smarter cd command, inspired by z and autojump.
