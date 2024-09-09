@@ -24,6 +24,7 @@
       "/etc/NetworkManager/system-connections"
       "/etc/nix/inputs"
       "/etc/agenix/"
+      "/etc/secureboot/"
 
       "/var/log"
       "/var/lib"

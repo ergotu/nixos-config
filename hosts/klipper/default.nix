@@ -11,6 +11,7 @@ in {
     disko.nixosModules.default
     ./disko-config.nix
     ./impermanence.nix
+    ./secureboot.nix
     ./klipper
   ];
 
