@@ -57,6 +57,7 @@
 
     onActivation = {
       autoUpdate = true;
+      upgrade = true;
       # 'zap': uninstalls all formulae(and related files) not listed in the generated Brewfile
       cleanup = "zap";
     };
@@ -70,11 +71,12 @@
     };
 
     taps = [
-      # "homebrew/cask-fonts"
+      "homebrew/cask-fonts"
       "homebrew/services"
       "homebrew/cask-versions"
 
       "hashicorp/tap"
+      "nikitabobko/tap"
     ];
 
     brews = [
@@ -83,6 +85,8 @@
       "curl" # do not install curl via nixpkgs, it's not working well on macOS!
       "httpie" # http client
       "wireguard-tools" # wireguard
+
+      "aerospace"
 
       # Usage:
       #  https://github.com/tailscale/tailscale/wiki/Tailscaled-on-macOS#run-the-tailscaled-daemon
@@ -99,11 +103,17 @@
 
       # misc that nix do not have cache for.
       "git-trim"
+
+      # Development
+      "mitmproxy" # HTTP/HTTPS traffic inspector
+      "insomnia" # REST client
+      "wireshark" # network analyzer
+      "mockoon"
     ];
 
     # `brew install --cask`
     casks = [
-      "arc"
+      "arc" # Browser
     ];
   };
 }

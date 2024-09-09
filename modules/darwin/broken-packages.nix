@@ -17,6 +17,7 @@ let
     "verible"
     "gdb"
     "ncdu"
+    "mockoon"
   ];
 in {
   nixpkgs.overlays = [
