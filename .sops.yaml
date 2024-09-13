@@ -1,7 +1,9 @@
 keys:
-  - &macbook age1f5u5m3jyj0q60mxreuvwklxugwrrwxf8ughlh88cxu5fm8dd5vws2ex37p
+  - &ergotu age1f5u5m3jyj0q60mxreuvwklxugwrrwxf8ughlh88cxu5fm8dd5vws2ex37p
+  - &klipper age1qux8pztapngnx94y09mrjtq8890hgxgz7rwdwzt8qmhq6p093ensxryu3t
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini|sops)$
     key_groups:
       - age:
-          - *macbook
+          - *ergotu
+          - *klipper

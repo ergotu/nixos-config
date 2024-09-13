@@ -1,7 +1,5 @@
 {
-  description = "My config for NixOS and nix-darwin machines";
-
-  outputs = inputs: import ./outputs inputs;
+  description = "Ergotus Nix-Config";
 
   nixConfig = {
     # substituers will be appended to the default substituters when fetching packages
@@ -19,121 +17,134 @@
     ];
   };
 
-  # This is the standard format for flake.nix. `inputs` are the dependencies of the flake,
-  # Each item in `inputs` will be passed as a parameter to the `outputs` function after being pulled and built.
   inputs = {
-    # There are many ways to reference flake inputs. The most widely used is github:owner/name/reference,
-    # which represents the GitHub repository URL + branch/commit-id/tag.
+    #################### Official NixOS and HM Package Sources ####################
 
-    # Official NixOS package source, using nixos's unstable branch by default
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
-    # for macos
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
-    nix-darwin = {
-      url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
-    };
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    hardware.url = "github:nixos/nixos-hardware";
 
-    # home-manager, used for managing user configuration
     home-manager = {
-      url = "github:nix-community/home-manager/master";
-
-      # The `follows` keyword in inputs is used for inheritance.
-      # Here, `inputs.nixpkgs` of home-manager is kept consistent with the `inputs.nixpkgs` of the current flake,
-      # to avoid problems caused by different versions of nixpkgs dependencies.
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # home-manager, used for managing user configuration
     home-manager-stable = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    # Sandboxing for nix packages
-    nixpak = {
-      url = "github:nixpak/nixpak";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #################### Utilities ####################
 
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.3.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    impermanence.url = "github:nix-community/impermanence";
-
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # community wayland nixpkgs
-    # nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
-    # anyrun - a wayland launcher
-    anyrun = {
-      url = "github:Kirottu/anyrun";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # generate iso/qcow2/docker/... image from nixos configuration
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # secrets management
-    agenix = {
-      # lock with git commit at 0.15.0
-      # url = "github:ryantm/agenix/564595d0ad4be7277e07fa63b5a991b3c645655d";
-      # replaced with a type-safe reimplementation to get a better error message and less bugs.
-      url = "github:ryan4yin/ragenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-gaming.url = "github:fufexan/nix-gaming";
-
+    # Declarative partitioning and formatting
     disko = {
-      url = "github:nix-community/disko/v1.6.1";
+      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # add git hooks to format nix code before commit
-    pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nuenv.url = "github:DeterminateSystems/nuenv";
-
-    haumea = {
-      url = "github:nix-community/haumea/v0.2.2";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    microvm = {
-      url = "github:astro/microvm.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    catppuccin.url = "github:catppuccin/nix";
-
-    nvimdots = {
-      url = "github:ergotu/neovim";
+    # Secrets management. See ./docs/secretsmgmt.md
+    sops-nix = {
+      url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
 
-    srvos = {
-      url = "github:nix-community/srvos";
+    pre-commit-hooks = {
+      url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
+
+    # Windows management
+    # for now trying to avoid this one because I want stability for my wm
+    # this is the hyprland development flake package / unstable
+    # hyprland = {
+    #   url = "github:hyprwm/hyprland";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    #   hyprland-plugins = {
+    #   url = "github:hyprwm/hyprland-plugins";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
+
+    #################### Personal Repositories ####################
+
+    # Private secrets repo.  See ./docs/secretsmgmt.md
+    # Authenticate via ssh and use shallow clone
+    # nix-secrets = {
+    #   url = "git+ssh://git@github.com/ergotu/nix-secrets.git?ref=main&shallow=1";
+    #   inputs = {};
+    # };
+  };
+
+  outputs = {
+    self,
+    disko,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
+    inherit (self) outputs;
+    forAllSystems = nixpkgs.lib.genAttrs [
+      "x86_64-linux"
+      "aarch64-linux"
+      "aarch64-darwin"
+    ];
+    inherit (nixpkgs) lib;
+    configVars = import ./vars {inherit inputs lib;};
+    configLib = import ./lib {inherit lib;};
+    specialArgs = {
+      inherit
+        inputs
+        outputs
+        configVars
+        configLib
+        nixpkgs
+        ;
+    };
+  in {
+    # Custom modules to enable special functionality for nixos or home-manager oriented configs.
+    nixosModules = import ./modules/nixos;
+    homeManagerModules = import ./modules/home-manager;
+
+    # Custom modifications/overrides to upstream packages.
+    overlays = import ./overlays {inherit inputs outputs;};
+
+    # Custom packages to be shared or upstreamed.
+    packages = forAllSystems (
+      system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+        import ./pkgs {inherit pkgs;}
+    );
+
+    checks = forAllSystems (
+      system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+        import ./checks {inherit inputs system pkgs;}
+    );
+
+    # Nix formatter available through 'nix fmt' https://nix-community.github.io/nixpkgs-fmt
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+
+    # ################### DevShell ####################
+    #
+    # Custom shell for bootstrapping on new hosts, modifying nix-config, and secrets management
+
+    devShells = forAllSystems (
+      system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+        checks = self.checks.${system};
+      in
+        import ./shell.nix {inherit checks pkgs;}
+    );
+
+    #################### NixOS Configurations ####################
+    #
+    # Building configurations available through `just rebuild` or `nixos-rebuild --flake .#hostname`
+
+    nixosConfigurations = {};
   };
 }

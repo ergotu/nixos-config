@@ -10,21 +10,6 @@
   genK3sAgentModule = import ./genK3sAgentModule.nix;
   genK3sStandaloneModule = import ./genK3sStandaloneModule.nix;
 
-  mkKey = rec {
-    mkKeymap = mode: key: action: desc: {
-      inherit mode key action;
-      options = {
-        inherit desc;
-        silent = true;
-        noremap = true;
-      };
-    };
-    mkKeymap' = mode: key: action:
-      mkKeymap mode key action null;
-
-    mkKeymapWithOpts = mode: key: action: desc: opts:
-      (mkKeymap mode key action desc) // {options = opts;};
-  };
   # use path relative to the root of the project
   relativeToRoot = lib.path.append ../.;
   scanPaths = path:
