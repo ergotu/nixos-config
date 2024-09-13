@@ -1,11 +1,11 @@
 {
-  mylib,
-  myvars,
+  configLib,
+  configVars,
   ...
 }: {
-  home.homeDirectory = "/Users/${myvars.username}";
+  home.homeDirectory = "/Users/${configVars.username}";
   imports =
-    (mylib.scanPaths ./.)
+    (configLib.scanPaths ./.)
     ++ [
       ../base/core
       ../base/tui

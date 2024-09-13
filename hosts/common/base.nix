@@ -1,7 +1,7 @@
 {
   lib,
   pkgs,
-  myvars,
+  configVars,
   nixpkgs,
   ...
 } @ args: {
@@ -52,8 +52,8 @@
     attic-client
   ];
 
-  users.users.${myvars.username} = {
-    description = "${myvars.userfullname}";
+  users.users.${configVars.username} = {
+    description = "${configVars.userfullname}";
     # Public Keys that can be used to login to all my PCs, Macbooks, and servers.
     #
     # Since its authority is so large, we must strengthen its security:
@@ -66,7 +66,7 @@
     #      ```
     #    2. Never leave the device and never sent over the network.
     # 2. Or just use hardware security keys like Yubikey/CanoKey.
-    openssh.authorizedKeys.keys = myvars.sshKeys;
+    openssh.authorizedKeys.keys = configVars.sshKeys;
   };
 
   nix.settings = {
@@ -76,7 +76,7 @@
     # given the users in this list the right to specify additional substituters via:
     #    1. `nixConfig.substituers` in `flake.nix`
     #    2. command line args `--options substituers http://xxx`
-    trusted-users = [myvars.username "Jordi"];
+    trusted-users = [configVars.username "Jordi"];
 
     substituters = [
       "https://cache.nixos.org"

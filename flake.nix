@@ -56,6 +56,19 @@
       inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
 
+    # Sandboxing for nix packages
+    nixpak = {
+      url = "github:nixpak/nixpak";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.3.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    impermanence.url = "github:nix-community/impermanence";
+
     # Windows management
     # for now trying to avoid this one because I want stability for my wm
     # this is the hyprland development flake package / unstable
@@ -144,6 +157,15 @@
     #
     # Building configurations available through `just rebuild` or `nixos-rebuild --flake .#hostname`
 
-    nixosConfigurations = {};
+    nixosConfigurations = {
+      desktop = lib.nixosSystem {
+        inherit specialArgs;
+        modules = [
+          home-manager.nixosModules.home-manager
+          {home-manager.extraSpecialArgs = specialArgs;}
+          ./hosts/desktop
+        ];
+      };
+    };
   };
 }

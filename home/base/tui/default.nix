@@ -1,9 +1,9 @@
 {
-  mylib,
+  configLib,
   lib,
   ...
 }: {
-  imports = mylib.scanPaths ./.;
+  imports = configLib.scanPaths ./.;
 
   custom.cloud.enabled = lib.mkDefault false;
 }

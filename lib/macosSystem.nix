@@ -6,7 +6,7 @@
   system,
   genSpecialArgs,
   specialArgs ? (genSpecialArgs system),
-  myvars,
+  configVars,
   ...
 }: let
   inherit (inputs) nixpkgs-darwin nix-darwin;
@@ -30,7 +30,7 @@ in
             home-manager.useUserPackages = true;
 
             home-manager.extraSpecialArgs = specialArgs;
-            home-manager.users."${myvars.username}".imports = home-modules;
+            home-manager.users."${configVars.username}".imports = home-modules;
 
             home-manager.backupFileExtension = ".before-home-manager";
           }

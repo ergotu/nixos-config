@@ -1,4 +1,4 @@
-{mylib, ...} @ args:
+{configLib, ...} @ args:
 map
 (path: import path args)
-(mylib.scanPaths ./.)
+(configLib.scanPaths ./.)
