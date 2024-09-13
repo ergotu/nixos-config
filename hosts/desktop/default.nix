@@ -1,11 +1,16 @@
 {
   lib,
+  nixos-hardware,
+  config,
   disko,
   ...
 }: let
   hostName = "desktop";
+  nividiaPackage = config.hardware.nvidia.package;
 in {
   imports = [
+    nixos-hardware.nixosModules.common-cpu-amd
+
     ./hardware-configuration.nix
     disko.nixosModules.default
     ./disko-config.nix
@@ -24,7 +29,7 @@ in {
     # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/os-specific/linux/nvidia-x11/default.nix
     # package = config.boot.kernelPackages.nvidiaPackages.stable;
 
-    open = false;
+    open = lib.mkOverride 990 (nividiaPackage ? open && nividiaPackage ? firmware);
     # required by most wayland compositors!
     modesetting.enable = true;
     powerManagement.enable = true;
