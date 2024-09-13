@@ -126,8 +126,7 @@
         import ./checks {inherit inputs system pkgs;}
     );
 
-    # Nix formatter available through 'nix fmt' https://nix-community.github.io/nixpkgs-fmt
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
     # ################### DevShell ####################
     #
