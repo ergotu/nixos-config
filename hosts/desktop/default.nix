@@ -1,5 +1,9 @@
-{ lib, disko, ... }:
-let hostName = "desktop";
+{
+  lib,
+  disko,
+  ...
+}: let
+  hostName = "desktop";
 in {
   imports = [
     ./hardware-configuration.nix
@@ -14,7 +18,7 @@ in {
   };
 
   # For Nvidia GPU
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/os-specific/linux/nvidia-x11/default.nix
