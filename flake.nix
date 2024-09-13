@@ -158,12 +158,12 @@
     # Building configurations available through `just rebuild` or `nixos-rebuild --flake .#hostname`
 
     nixosConfigurations = {
-      desktop = lib.nixosSystem {
+      vm = lib.nixosSystem {
         inherit specialArgs;
         modules = [
           home-manager.nixosModules.home-manager
           {home-manager.extraSpecialArgs = specialArgs;}
-          ./hosts/desktop
+          ./hosts/vm
         ];
       };
     };

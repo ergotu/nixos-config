@@ -8,6 +8,7 @@
     src = ./.;
     default_stages = ["pre-commit"];
     hooks = {
+      commitizen.enable = true;
       check-added-large-files.enable = true;
       check-case-conflicts.enable = true;
       check-executables-have-shebangs.enable = true;
