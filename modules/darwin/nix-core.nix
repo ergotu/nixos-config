@@ -24,4 +24,6 @@
   nix.settings.auto-optimise-store = false;
 
   nix.gc.automatic = true;
+
+  nix.linux-builder.enable = true;
 }
