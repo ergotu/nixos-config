@@ -176,6 +176,7 @@ in {
         # fix `cc` replaced by clang, which causes nvim-treesitter compilation error
         gcc
         # Nix-related
+        nixd
         alejandra
         deadnix
         statix
@@ -183,8 +184,8 @@ in {
         typos
         # code formatter
         nodePackages.prettier
-
-        nvimdots.packages.${system}.neovim
+        # task runner
+        just
       ];
       name = "dots";
       shellHook = ''
