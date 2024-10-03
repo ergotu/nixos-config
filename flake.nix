@@ -129,6 +129,8 @@
       url = "github:ergotu/neovim";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+      inputs.home-manager.follows = "home-manager";
+      inputs.pre-commit-hooks.follows = "pre-commit-hooks";
     };
 
     srvos = {
