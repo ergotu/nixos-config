@@ -64,7 +64,7 @@ gitgc:
 
 [macos]
 darwin-build:
-  nom build ".#darwinConfigurations.jordi-mbp.system" --extra-experimental-features "nix-command flakes"
+  nom build ".#darwinConfigurations.jordi-mbp.system"
 
 [macos]
 darwin-switch:
