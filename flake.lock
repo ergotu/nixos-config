@@ -1721,11 +1721,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728973236,
-        "narHash": "sha256-l/qJ9tFg4bfWFzIURX4g5nanX6sTHgK8fDuEqx1WfnU=",
+        "lastModified": 1730194571,
+        "narHash": "sha256-b3fyQZuKqW7KD6f6h6Zdp/+pmkYaSs/DLCFobrHDUOc=",
         "owner": "ergotu",
         "repo": "neovim",
-        "rev": "5291fabf9dd93011d9c4baccaee5be838f31df47",
+        "rev": "3778a289a7771668dc599b197e55db3a6b1491af",
         "type": "github"
       },
       "original": {
