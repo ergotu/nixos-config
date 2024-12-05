@@ -69,6 +69,8 @@
     openssh.authorizedKeys.keys = myvars.sshKeys;
   };
 
+  nix.channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
+
   nix.settings = {
     # enable flakes globally
     experimental-features = ["nix-command" "flakes"];

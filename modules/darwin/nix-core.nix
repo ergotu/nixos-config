@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   ###################################################################################
   #
   #  Core configuration for nix-darwin
@@ -26,4 +26,13 @@
   nix.gc.automatic = true;
 
   nix.linux-builder.enable = true;
+
+  nix.nixPath = pkgs.lib.mkForce [
+    {
+      darwin-config = builtins.concatStringsSep ":" [
+        "$HOME/.nixpkgs/darwin-configuration.nix"
+        "$HOME/.nix-defexpr/channels"
+      ];
+    }
+  ];
 }
