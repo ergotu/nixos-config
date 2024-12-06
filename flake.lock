@@ -1477,11 +1477,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1733377165,
-        "narHash": "sha256-oQ5pU3MFsW7+ZNC9cr2CfiD7BXyQ/K1fL1leZZdFT6M=",
+        "lastModified": 1733475011,
+        "narHash": "sha256-75lnH7ne+6aoZOqFufmKhzJHNH5LWfRZe7YYEA/gSJg=",
         "owner": "ergotu",
         "repo": "neovim",
-        "rev": "5e8144dee62775c53e6972464785b57c7e6fa92e",
+        "rev": "f0b52693dfe7ff0d43db47d4dd2dd1558b509010",
         "type": "github"
       },
       "original": {
