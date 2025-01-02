@@ -5,6 +5,7 @@
   ...
 }: {
   imports = [ghostty-hm.homeModules.default];
+
   programs.ghostty = {
     enable = true;
 
