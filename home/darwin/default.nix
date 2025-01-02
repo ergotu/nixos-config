@@ -9,7 +9,7 @@
     ++ [
       ../base/core
       ../base/tui
-      # ../base/gui
+      ../base/gui
       ../base/home.nix
     ];
 }

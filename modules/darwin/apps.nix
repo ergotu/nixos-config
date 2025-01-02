@@ -114,6 +114,7 @@
     # `brew install --cask`
     casks = [
       "arc" # Browser
+      "ghostty" # Terminal Emulator
     ];
   };
 }

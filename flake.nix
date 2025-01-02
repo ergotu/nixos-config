@@ -67,6 +67,16 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs-unstable.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+    };
+
+    ghostty-hm = {
+      url = "github:clo4/ghostty-hm-module";
+    };
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";

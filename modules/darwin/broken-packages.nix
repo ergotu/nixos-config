@@ -8,6 +8,7 @@ let
     "terraformer"
     "packer"
     "git-trim"
+    "ghostty"
     "conda"
     "mitmproxy"
     "insomnia"
