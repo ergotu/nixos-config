@@ -34,7 +34,7 @@
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
     nix-darwin = {
       url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
@@ -71,10 +71,6 @@
       url = "github:ghostty-org/ghostty";
       inputs.nixpkgs-unstable.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs-stable";
-    };
-
-    ghostty-hm = {
-      url = "github:clo4/ghostty-hm-module";
     };
 
     hyprland = {

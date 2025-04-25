@@ -39,7 +39,7 @@ history:
 
 # Open a nix shell with the flake
 repl:
-  nix repl -f flake:nixpkgs
+  nix repl -f flake:nixpkgs --expr 'builtins.getFlake "."'
 
 # remove all generations older than 7 days
 clean:
